@@ -1,0 +1,31 @@
+.spinner {
+  position: absolute;
+  top: 10px;
+  left: 47%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #0d662b;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+
+  &.dark_mode {
+    border: 3px solid #9c9a9a;
+    border-top-color: black;
+  }
+}
+
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}

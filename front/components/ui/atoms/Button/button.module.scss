@@ -1,0 +1,63 @@
+.BaseButton {
+    display: inline-block;
+    background-color: var(--accent-color);
+    padding: 7px 10px 6px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    &:hover:not(:disabled) {
+      background-color: var(--accent-hover-color);
+    }
+    &:active:not(:disabled) {
+      background-color: var(--accent-color);
+    }
+  
+    &.isLoading {
+      background-color: var(--accent-hover-color);
+    }
+  
+    &.ColorSecondary {
+      background-color: rgb(87, 160, 109);
+  
+      &:hover:not(:disabled) {
+        background-color: #3ae651;
+      }
+  
+      &:active:not(:disabled) {
+        background-color: #3ae651;
+      }
+  
+      &.isLoading {
+        background-color: #b0e4b7;
+      }
+    }
+  
+    &.ColorDanger {
+      background-color: #b91c1c;
+  
+      &:hover:not(:disabled) {
+        background-color: #7f1d1d;
+      }
+  
+      &:active:not(:disabled) {
+        background-color: #b91c1c;
+      }
+  
+      &.isLoading {
+        background-color: #7f1d1d;
+      }
+    }
+  }

@@ -1,0 +1,56 @@
+
+
+
+.admin {
+    margin: 18px auto 19px;
+    max-width: 1260px;
+    min-height: 600px;
+    padding: 0 20px;
+  }
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .name {
+    font-size: 27px;
+    font-weight: 500;
+    margin: 0 0 50px 0;
+  
+    @media (max-width: 1023px) {
+      font-size: 21px;
+      font-weight: 500;
+    }
+  }
+  .tabs {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    background-color: rgba(173, 144, 144, 0.1);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .tab {
+    font-size: 16px;
+    border: none;
+    background: none;
+    padding: 10px 20px;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(84, 176, 112, 1);
+      border-radius: 5px;
+      color: white;
+    }
+  }
+  .tab_active {
+    cursor: none;
+    background-color: rgba(84, 176, 112, 1);
+    border-radius: 5px;
+    color: white;
+  }
+  
+  
