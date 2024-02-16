@@ -3,19 +3,19 @@ import { toast } from 'react-toastify'
 import api from '../axiosClient'
 import { AxiosError } from 'axios'
 import { HTTPStatus } from '@/constans'
-import { ISignInFx, ISignUpFx, IUser} from '@/types/auth'
+import { ISignInFx, ISignUpFx, IUser } from '@/types/auth'
 import { jwtDecode } from 'jwt-decode'
-import { setAuth, setUser,} from '@/context/user'
+import { setAuth, setUser } from '@/context/user'
 
 export const singUpFx = createEffect(
   async ({ url, name, password, email }: ISignUpFx) => {
     const { data } = await api.post(url, { name, password, email })
     const userDataReg: IUser = await jwtDecode(data.accessToken)
 
-     setUser(userDataReg)
+    setUser(userDataReg)
 
-     localStorage.setItem('auth_registration' , JSON.stringify(data.accessToken))
-     
+    localStorage.setItem('auth_registration', JSON.stringify(data.accessToken))
+
     if (data.warningMessage) {
       toast.warning(data.warningMessage)
       return
@@ -27,29 +27,26 @@ export const singUpFx = createEffect(
   }
 )
 
-
-
 export const singInFx = createEffect(
   async ({ url, email, password }: ISignInFx) => {
     const result = await api.post(url, { email, password })
 
     const userData: IUser = await jwtDecode(result.data.accessToken)
-    
+
     setUser(userData)
 
     localStorage.setItem('auth', JSON.stringify(result.data))
 
     toast.success('Вход выполнен!')
-    
-      return result
-  
+
+    return result
   }
 )
 
 export const checkUserAuthFx = createEffect(async (url: string) => {
   try {
     const data = await api.get(url)
-    const userDataCheck: IUser = await jwtDecode(data.data.accessToken);
+    const userDataCheck: IUser = await jwtDecode(data.data.accessToken)
 
     setUser(userDataCheck)
 
@@ -75,5 +72,3 @@ export const logoutFx = createEffect(async (url: string) => {
     toast.error((error as Error).message)
   }
 })
-
-

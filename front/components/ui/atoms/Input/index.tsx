@@ -1,10 +1,9 @@
-import { forwardRef } from 'react'
+/* import { forwardRef } from 'react'
 import clsx from 'clsx'
 import classes from './input.module.scss'
 import { ReactTagProps } from '../../types'
 
 export type InputProps = ReactTagProps<'input'>
-
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ type = 'text', ...props }, ref) => {
     return (
@@ -17,3 +16,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+ */

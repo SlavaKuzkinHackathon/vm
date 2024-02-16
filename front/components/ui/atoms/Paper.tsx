@@ -1,5 +1,5 @@
 export type PaperProps = React.HTMLAttributes<HTMLDivElement>
-export const Paper = (props: PaperProps)=>{
+export const Paper = (props: PaperProps) => {
   return (
     <div
       {...props}

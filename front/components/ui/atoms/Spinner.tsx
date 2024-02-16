@@ -5,7 +5,7 @@ export type SpinnerProps = {
   className?: string
 }
 
-export const Spinner = (props: SpinnerProps)=>{
+export const Spinner = (props: SpinnerProps) => {
   return (
     <svg
       className={clsx(props.className, 'stroke-blue-600')}

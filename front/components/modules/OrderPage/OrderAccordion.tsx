@@ -12,7 +12,6 @@ import EditSvg from '@/components/elements/EditSvg/EditSvg'
 import OrderItem from './OrderItem'
 import { formatPrice } from '@/utils/common'
 
-
 const OrderAccordion = ({
   setOrderIsReady,
   showDoneIcon,
@@ -23,7 +22,6 @@ const OrderAccordion = ({
   const [expanded, setExpanded] = useState(true)
   const shoppingCart = useStore($shoppingCart)
   const totalPrice = useStore($totalPrice)
-  const toggleAccordion = () => setExpanded(!expanded)
 
   const openAccordion = () => {
     setOrderIsReady(false)
@@ -94,19 +92,23 @@ const OrderAccordion = ({
               </ul>
               <div className={styles.order__cart__footer}>
                 <div className={styles.order__cart__footer__total}>
-                <span
-                      className={`${styles.order__cart__footer__text} ${darkModeClass}`}
-                    >
-                      Общая сумма заказа:
-                    </span>
-                    <span className={styles.order__cart__footer__price}>{formatPrice(totalPrice)} ₽</span>
+                  <span
+                    className={`${styles.order__cart__footer__text} ${darkModeClass}`}
+                  >
+                    Общая сумма заказа:
+                  </span>
+                  <span className={styles.order__cart__footer__price}>
+                    {formatPrice(totalPrice)} ₽
+                  </span>
                 </div>
                 <button
-                className={styles.order__cart__footer__btn}
-                onClick={closeAccordion}
-                disabled={!shoppingCart.length}
-                >Продолжить</button>
-              </div>  
+                  className={styles.order__cart__footer__btn}
+                  onClick={closeAccordion}
+                  disabled={!shoppingCart.length}
+                >
+                  Продолжить
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

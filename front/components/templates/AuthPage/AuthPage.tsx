@@ -20,7 +20,7 @@ const AuthPage = () => {
             <div></div>
           ) : (
             <div>
-            <SignInForm />
+              <SignInForm />
               <p className={`${styles.message} ${darkModeClass}`}>
                 Отсутствует регистрация?{' '}
                 <Link href={''} passHref legacyBehavior>
@@ -34,7 +34,7 @@ const AuthPage = () => {
                   </a>
                 </Link>
               </p>
-              </div>
+            </div>
           )}
         </div>
 
@@ -44,7 +44,7 @@ const AuthPage = () => {
             <div></div>
           ) : (
             <div>
-              <SignUpForm /> 
+              <SignUpForm />
               <p className={`${styles.message} ${darkModeClass}`}>
                 Зарегистрированны ?{' '}
                 <Link href="" passHref legacyBehavior>

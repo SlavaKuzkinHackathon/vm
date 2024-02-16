@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import classes from './button.module.scss';
+import classes from './button.module.scss'
 import { ReactTagProps } from '../../types'
 import { Spinner } from '../Spinner'
 
@@ -8,10 +8,10 @@ const colorMap = {
   primary: undefined,
   secondary: classes.ColorSecondary,
   danger: classes.ColorDanger,
-};
+}
 
 export type ButtonProps = {
-  isLoading?: boolean;
+  isLoading?: boolean
   color?: 'primary' | 'secondary' | 'danger'
 } & ReactTagProps<'button'>
 
@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
         colorMap[color],
         {
           [classes.isLoading]: isLoading,
-        },
+        }
       )}
       disabled={props.disabled || isLoading}
     >

@@ -64,9 +64,7 @@ const ServicesPage = ({ isCustomPage = true }) => {
               </p>
               <div className={`${styles.contacts__list} ${darkModeClass}`}>
                 <Link href="/services" passHref legacyBehavior>
-                  <a>
-                    Также мы ремонтируем и перетягиваем мягкую мебель
-                  </a>
+                  <a>Также мы ремонтируем и перетягиваем мягкую мебель</a>
                 </Link>
               </div>
             </div>

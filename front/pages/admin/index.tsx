@@ -10,14 +10,14 @@ const Admin: NextPage = () => {
   const [isActive, setIsActive] = useState('products')
 
   const getDefaultTextGenerator = useCallback(() => 'Админ-панель', [])
-  const getTextGenerator = useCallback((param: string) => ({}[param]), [])
+  const getTextGenerator = useCallback((param: string) => ({})[param],[])
 
   return (
     <>
-    <Breadcrumbs
-            getDefaultTextGenerator={getDefaultTextGenerator}
-            getTextGenerator={getTextGenerator}
-          /> 
+      <Breadcrumbs
+        getDefaultTextGenerator={getDefaultTextGenerator}
+        getTextGenerator={getTextGenerator}
+      />
       {shouldAccessAllow && (
         <section className={styles.admin}>
           <div className={styles.header}>

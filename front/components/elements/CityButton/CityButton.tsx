@@ -1,6 +1,6 @@
 import LocationSvg from '../LocationSvg/LocationSvg'
 import styles from '@/styles/cityButton/index.module.scss'
-import { useStore } from 'effector-react';
+import { useStore } from 'effector-react'
 import { $mode } from '@/context/mode';
 import { $userCity, setUserCity } from '@/context/user';
 import { toast } from 'react-toastify';

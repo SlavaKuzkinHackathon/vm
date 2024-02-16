@@ -29,7 +29,6 @@ export const getProductsPaginateFx = createEffect(async (url: string) => {
   return data
 })
 
-
 export const getDivansOrNewFx = createEffect(async (url: string) => {
   const { data } = await api.get(url)
 
@@ -157,8 +156,6 @@ export const updateProduct = async (
 export const deleteProduct = async (productId: number): Promise<void> => {
   await api.delete(`${BASE_ROUTE}/${productId}`)
 }
-
-
 
 ///search
 export const searchProductFx = createEffect(

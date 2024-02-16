@@ -17,7 +17,6 @@ import {
 import CartPopupItem from './CartPopupItem'
 import { getCartItemsFx } from '@/app/api/shopping-cart'
 import { $auth, $user } from '@/context/user'
-import { toast } from 'react-toastify'
 import { formatPrice } from '@/utils/common'
 
 const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(

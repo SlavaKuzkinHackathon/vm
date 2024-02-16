@@ -1,20 +1,20 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export type PaginationQueryDTO = {
-  take: number;
-  skip: number;
-};
+  take: number
+  skip: number
+}
 
 export type ListDTO<T> = {
-  count: number;
+  count: number
 
-  list: T[];
-};
+  list: T[]
+}
 
 export function createResponseSchema<T>(schema: z.ZodType<T>) {
   return z.object({
     data: schema,
-  });
+  })
 }
 
 export function createListResponseSchema<T>(schema: z.ZodType<T>) {
@@ -23,5 +23,5 @@ export function createListResponseSchema<T>(schema: z.ZodType<T>) {
       count: z.number(),
       list: z.array(schema),
     }),
-  );
+  )
 }

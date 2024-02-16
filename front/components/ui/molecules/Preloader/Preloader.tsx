@@ -9,7 +9,7 @@ export const Preloader = ({
   children,
   isLoading,
   ...props
-}: PreloaderProps)=>{
+}: PreloaderProps) => {
   return (
     <div {...props} className={clsx(props.className, classes.Preloader)}>
       {children}

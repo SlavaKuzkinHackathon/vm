@@ -28,10 +28,8 @@ function getExifOrientation(file: File, callback: (n: number) => void) {
   let blob: File | Blob | null = null
   if (file.slice) {
     blob = file.slice(0, 131072)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
   } else if (file.webkitSlice) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     blob = (
       file as unknown as {

@@ -1,12 +1,12 @@
 import { Image, ImageInput } from '@/components/ui/atoms/ImageInput'
 
 export type MultipleImagesInput = {
-  images: { preview: string; raw: Blob }[];
+  images: { preview: string; raw: Blob }[]
   onChange: (images: { preview: string; raw: Blob }[]) => void
   id?: string
 }
 
-export const MultipleImagesInput = (props: MultipleImagesInput)=>{
+export const MultipleImagesInput = (props: MultipleImagesInput) => {
   return (
     <div className={'flex flex-wrap gap-4'}>
       {props.images.map((image, idx) => (

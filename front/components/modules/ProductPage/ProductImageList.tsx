@@ -14,16 +14,16 @@ const PartImagesList = () => {
   return (
     <div className={styles.part__images}>
       {isMobile ? (
-       <div
-        className={styles.part__slide}
-        style={{ width: isMobile530 ? 228 : isMobile700 ? 350 : 593 }}
-      >
-        <img src={getImageURL(productOne.image)} alt={productOne.name}  />
-      </div>
+        <div
+          className={styles.part__slide}
+          style={{ width: isMobile530 ? 228 : isMobile700 ? 350 : 593 }}
+        >
+          <img src={getImageURL(productOne.image)} alt={productOne.name} />
+        </div>
       ) : (
         <>
           <div className={styles.part__images__main}>
-            <img src={getImageURL(productOne.image)} alt={productOne.name}/>
+            <img src={getImageURL(productOne.image)} alt={productOne.name} />
           </div>
         </>
       )}

@@ -56,8 +56,6 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
     loadProducts()
   }, [filteredModels, isFilterInQuery])
 
-  console.log(products.rows)
-
   const loadProducts = async () => {
     try {
       setSpinner(true)
@@ -223,7 +221,9 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
               <span className={styles.catalog__top__mobile_btn__svg}>
                 <FilterSvg />
               </span>
-              <span className={styles.catalog__top__mobile_btn__text}>Фильтр</span>
+              <span className={styles.catalog__top__mobile_btn__text}>
+                Фильтр
+              </span>
             </button>
             <FilterSelect setSpinner={setSpinner} />
           </div>

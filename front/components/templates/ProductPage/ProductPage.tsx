@@ -8,11 +8,8 @@ import CartHoverSvg from '@/components/elements/CartHoverSvg/CartHoverSvg'
 import spinnerStyles from '@/styles/spinner/index.module.scss'
 import { toggleCartItem } from '@/utils/shopping-cart'
 import { $user } from '@/context/user'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { getProductsFx } from '@/app/api/products'
-import {
-  $productsm,
-} from '@/context/products'
+import { $productsm } from '@/context/products'
 import { removeFromCartFx } from '@/app/api/shopping-cart'
 import styles from '@/styles/product/index.module.scss'
 import DashboardSlider from '@/components/modules/HomePage/DashboardSlider'
@@ -28,8 +25,7 @@ const ProductPage = () => {
   const isInCart = cartItems.some((item) => item.productId === productOne.id)
   const spinnerToggleCart = useStore(removeFromCartFx.pending)
   const spinnerSlider = useStore(getProductsFx.pending)
-  const toggleToCart = () =>
-    toggleCartItem(user.name, productOne.id, isInCart)
+  const toggleToCart = () => toggleCartItem(user.name, productOne.id, isInCart)
 
   return (
     <section>
@@ -39,7 +35,7 @@ const ProductPage = () => {
             {productOne.name}
           </h2>
           <div className={styles.part__inner}>
-            <PartImagesList /> 
+            <PartImagesList />
             <div className={styles.part__info}>
               <span className={`${styles.part__info__price} ${darkModeClass}`}>
                 {formatPrice(productOne.price || 0)} ₽
@@ -101,5 +97,3 @@ const ProductPage = () => {
 }
 
 export default ProductPage
-
-
