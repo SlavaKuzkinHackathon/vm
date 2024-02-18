@@ -31,7 +31,7 @@ const Footer = () => {
               )}
               {isMedia500 && (
                 <Accordion
-                  title="Услуги компании"
+                  title="Интернет-магазин"
                   titleClass={styles.footer__top__item__title}
                   arrowOpenClass={styles.open}
                 >

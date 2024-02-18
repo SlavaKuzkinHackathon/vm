@@ -148,7 +148,7 @@ const SearchInput = () => {
           components={{
             NoOptionsMessage: spinner ? NoOptionsSpinner : NoOptionsMessage,
           }}
-          placeholder="Сайт в тестовом режиме"
+          placeholder="Тестовый режим"
           value={searchOption}
           onChange={handleSearchOptionChange}
           styles={{
