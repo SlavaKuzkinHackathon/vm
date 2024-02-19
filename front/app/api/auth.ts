@@ -4,7 +4,7 @@ import api from '../axiosClient'
 import { AxiosError } from 'axios'
 import { HTTPStatus } from '@/constans'
 import { ISignInFx, ISignUpFx, IUser } from '@/types/auth'
-import { jwtDecode } from 'jwt-decode'
+import jwtDecode  from 'jwt-decode'
 import { setAuth, setUser } from '@/context/user'
 
 export const singUpFx = createEffect(
