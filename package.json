@@ -6,6 +6,7 @@
   "scripts": {
     "client": "npm run dev --prefix front",
     "server": "npm run start:dev --prefix back",
+    "dev": "concurrently \"npm run dev --prefix front\" \"npm run start:dev --prefix back\"",
     "build": "concurrently \"npm run build --prefix front\" \"npm run build --prefix back\"",
     "pusk": "concurrently \"npm run start --prefix front\" \"npm run start --prefix back\"",
     "test": "echo \"Error: no test specified\" && exit 1"

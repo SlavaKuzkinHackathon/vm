@@ -1,4 +1,11 @@
+перед git pull in server delete commit
+in back to app.module.ts 
+   /*    dialectOptions: {
+        ssl: true,
+        native:true
+      }, */
 
+      
 __________________________________
 .env developers-back
 PORT=5000
