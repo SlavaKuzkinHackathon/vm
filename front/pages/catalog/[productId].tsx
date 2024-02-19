@@ -9,9 +9,10 @@ import ProductPage from '@/components/templates/ProductPage/ProductPage'
 import { useRouter } from 'next/router'
 import Custom404 from '../[404]'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
+import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
 
 const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
-  //const { shouldLoadContent } = useRedirectByUserCheck()
+  const { shouldLoadContent } = useRedirectByUserCheck()
   const auth = useStore($auth)
   const productOne = useStore($productOne)
   const router = useRouter()
@@ -53,7 +54,7 @@ const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
     <>
       <Head>
         <title>
-          Ваша мебель | {/* shouldLoadContent ? */ productOne.name /* : '' */}{' '}
+          Ваша мебель | { shouldLoadContent ?  productOne.name  : '' }
         </title>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

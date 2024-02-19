@@ -1,11 +1,13 @@
-import { UpdateProductVid }from '@/components/elements/UpdateProductVid/index'
+import { UpdateProductVid } from '@/components/elements/UpdateProductVid/index'
 import { Container } from '@/components/ui/Container'
+import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
 
 const AdminProductsPage = () => {
+  const { shouldLoadContent } = useRedirectByUserCheck()
   return (
-    <Container className="py-8">
-      <div className="my-8">
-            <UpdateProductVid/>
+    <Container>
+      <div>
+        {shouldLoadContent && <UpdateProductVid />}
       </div>
     </Container>
   )
