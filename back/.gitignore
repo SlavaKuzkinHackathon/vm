@@ -2,7 +2,7 @@
 /dist
 /node_modules
 
-list.txt
+#list.txt
 
 
 # Logs
@@ -38,4 +38,4 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # local env files
-#.env*.local
+.env*.local

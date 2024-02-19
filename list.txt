@@ -1,0 +1,321 @@
+
+__________________________________
+.env developers-back
+PORT=5000
+POSTGRES_DIALECT=postgres
+POSTGRES_LOGGING=true
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=root(slava)
+POSTGRES_DB=api
+
+JWT_ACCESS_SECRET=123secret
+JWT_REFRESH_SECRET=secret123
+
+CLIENT_URL=http://localhost:3000
+
+----------------------------
+.env production-back
+
+PORT=5000
+POSTGRES_DIALECT=postgres
+POSTGRES_LOGGING=true
+POSTGRES_HOST=dpg-cn4updicn0vc738u9k2g-a.singapore-postgres.render.com
+POSTGRES_PORT=5432
+POSTGRES_USER=api_3nh6_user
+POSTGRES_PASSWORD=57ywgPR0YaD0niCYDK2DdHOEKu7TcI8r
+POSTGRES_DB=api_3nh6
+
+JWT_ACCESS_SECRET=123secret
+JWT_REFRESH_SECRET=secret123
+
+CLIENT_URL=https/sk9.site
+___________________
+___________________
+ .env developers-front
+
+NEXT_PUBLIC_API_BASEURL=http://localhost:5000/
+NEXT_IMAGE_REMOTES=localhost,via.placeholder.com
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GEOAPI_KEY=ff2a9f17b5f446bc80c01806796ae22e
+
+
+---------------------------------
+
+
+ .env production-front
+NEXT_PUBLIC_API_BASEURL=https://autosk.ru
+NEXT_IMAGE_REMOTES=https,autosk.ru
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GEOAPI_KEY=ff2a9f17b5f446bc80c01806796ae22e
+_______________________
+-----------
+sudo su - postgres 
+psql
+\l
+DROP DATABASE ----;
+
+
+dropdb api
+----------
+sudo su - postgres
+
+createdb api -O postgres
+
+sudo su - postgres
+psql api
+
+psql api
+\dt - таблицы в базе данных
+
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+-удаление данных, и создание схемы в БД
+
+drop table products;
+drop table cart;
+
+
+
+select * from users;
+select * from cart;
+select * from roles;
+select * from users_roles;
+select * from products;
+select * from prodImage;
+select * from tokens;
+select * from tokens;
+select * from "prodImage";
+
+INSERT INTO roles VALUES (1, 'USER');
+INSERT INTO roles VALUES (2, 'ADMIN');
+
+
+INSERT INTO users_roles VALUES (2, 2);
+
+admin@mail.ru
+aaaaaaaa
+
+
+jess@mail.ru
+jess
+
+https://github.com/abkiselev/ecom
+https://github.com/TeemPresents/shop-ytb-client
+
+
+
+{
+  "name": "Диван №1",
+  "description": "Прямой 1900*800",
+  "model": "Диван прямой",
+  "price": 9000,
+  "in_stock": 3,
+  "rating": 3
+}
+
+{
+  "name": "Диван №2",
+  "description": "Угловой 2900*800",
+  "model": "Угловой диван",
+  "price": 8000,
+  "in_stock": 5,
+  "rating": 5
+}
+
+{
+  "name": "Диван №3",
+  "description": "Угловой 2200*1800",
+  "model": "Угловой диван",
+  "price": 8000,
+  "in_stock": 5,
+  "rating": 1
+}
+
+{
+  "name": "Диван №5",
+  "description": "Угловой 2300*1900",
+  "model": "Угловой диван",
+  "price": 85600,
+  "in_stock": 5,
+  "rating": 9
+}
+
+{
+  "name": "Диван №6",
+  "description": "Угловой 2300*1900",
+  "model": "Угловой диван",
+  "price": 68600,
+  "in_stock": 2,
+  "rating": 8
+}
+
+
+{
+  "name": "Диван селена №88 ",
+  "description": "Прямой 2250*850",
+  "model": "Диван прямой",
+  "price": 25000,
+  "in_stock": 5,
+  "rating": 7
+}
+
+{
+  "name": "Диван селена №77 ",
+  "description": "Прямой 2350*950",
+  "model": "Диван прямой",
+  "price": 22600,
+  "in_stock": 1,
+  "rating": 2
+}
+
+{
+  "name": "Диван селена №79 ",
+  "description": "Прямой 2450*1050",
+  "model": "Диван прямой",
+  "price": 23500,
+  "in_stock": 3,
+  "rating": 3
+}
+
+{
+  "name": "Диван селена №80 ",
+  "description": "Прямой 2150*1050",
+  "model": "Диван прямой",
+  "price": 21500,
+  "in_stock": 1,
+  "rating": 1
+}
+
+{
+  "name": "Диван №333",
+  "description": "Угловой 2300*1800",
+  "model": "Угловой диван",
+  "price": 88000,
+  "in_stock": 5,
+  "rating": 6
+}
+
+{
+  "name": "Диван №137",
+  "description": "Угловой 2510*1800",
+  "model": "Угловой диван",
+  "price": 89000,
+  "in_stock": 9,
+  "rating": 5
+}
+
+{
+  "name": "Диван №187",
+  "description": "Угловой 2560*1750",
+  "model": "Угловой диван",
+  "price": 79000,
+  "in_stock": 5,
+  "rating": 7
+}
+
+{
+  "name": "Тахта №187",
+  "description": " 2560*1750",
+  "model": "Тахта",
+  "price": 79000,
+  "in_stock": 5,
+  "rating": 7
+}
+
+{
+  "name": "Тахта детская",
+  "description": "1500*1750",
+  "model": "Тахта",
+  "price": 6000,
+  "in_stock": 5,
+  "rating": 3
+}
+
+{
+  "name": "Тахта сердечко",
+  "description": "1500*1150",
+  "model": "Тахта",
+  "price": 7000,
+  "in_stock": 6,
+  "rating": 5
+}
+
+{
+  "name": "Мое кресло",
+  "description": "Рабочее спальное место",
+  "model": "Тахта",
+  "price": 7000,
+  "in_stock": 1,
+  "rating": 5
+}
+
+//// https://yookassa.ru/
+/// jess.888@yandex.ru
+/// W*09c8P@u!eP
+
+//// Тестирование платежей карты для оплаты 
+///https://yookassa.ru/developers/payment-acceptance/testing-and-going-live/testing?ysclid=lscvx0x8f4111673945
+
+
+
+
+///https://www.emailjs.com/
+///jess.888@yandex.ru
+///qweasdzxcO1$
+///service_9fvr1b2
+
+///nskdivan@mail.ru
+///3VPUnBd4xMJb3hv
+//// mailjs GPvxaw3rHZ8W3HJmpup1
+
+//// geoapify.com
+////nskdivan@mail.ru
+/// pPutrw9AecuLkR4
+
+////2,21.56
+
+
+/////render.com
+PORT=5000
+POSTGRES_DIALECT=postgres
+POSTGRES_LOGGING=true
+POSTGRES_HOST=dpg-cn4updicn0vc738u9k2g-a.singapore-postgres.render.com
+POSTGRES_PORT=5432
+POSTGRES_USER=api_3nh6_user
+POSTGRES_PASSWORD=57ywgPR0YaD0niCYDK2DdHOEKu7TcI8r
+POSTGRES_DB=api_3nh6
+
+JWT_ACCESS_SECRET=123secret
+JWT_REFRESH_SECRET=secret123
+
+CLIENT_URL=http://localhost:3000
+/////
+
+
+//////
+selectel.ru
+300127
+qweasdzxcO1$
+*/////
+
+
+//TODO
+1. Адаптив изображений
+2. Пагинативная фильтрация
+3. Админ панель(адаптив, доработка update)
+4. Не перебрасывает на 404 при добление в роутер непонятных значений
+5. count значёк над корзиной(не соответствует количество)
+6. даже по остатку после корзины считает, что по наличию
+   Оплаченный товар вычитается из общего количества
+7. overlay не сбрасывается
+8. В платеже выводить товар и количество
+9. Ошибка Error initial props cancelled _getData
+
+
+http://91.236.198.175/api
+
+
+
