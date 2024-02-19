@@ -37,7 +37,7 @@ POSTGRES_DB=api_3nh6
 JWT_ACCESS_SECRET=123secret
 JWT_REFRESH_SECRET=secret123
 
-CLIENT_URL=https/sk9.site
+CLIENT_URL=https://sk9.site
 ___________________
 ___________________
  .env developers-front
