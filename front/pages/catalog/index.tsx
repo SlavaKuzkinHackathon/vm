@@ -9,7 +9,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 const Catalog = ({ query }: { query: IQueryParams }) => {
   const auth = useStore($auth)
-  const { shouldLoadContent } = useRedirectByUserCheck()
+ // const { shouldLoadContent } = useRedirectByUserCheck()
 
   const getDefaultTextGenerator = useCallback(() => 'Каталог', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
@@ -18,7 +18,7 @@ const Catalog = ({ query }: { query: IQueryParams }) => {
     <>
       <Head>
         <title>
-          Ваша мебель |  {shouldLoadContent ? ' Каталог' : ''} 
+          Ваша мебель |  {/* {shouldLoadContent ? */} ' Каталог' : ''{/* }  */}
         </title>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

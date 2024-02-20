@@ -4,7 +4,7 @@ import api from '../axiosClient'
 import { AxiosError } from 'axios'
 import { HTTPStatus } from '@/constans'
 import { ISignInFx, ISignUpFx, IUser } from '@/types/auth'
-import jwtDecode  from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import { setAuth, setUser } from '@/context/user'
 
 export const singUpFx = createEffect(
@@ -43,7 +43,27 @@ export const singInFx = createEffect(
   }
 )
 
-export const checkUserAuthFx = createEffect(async (url: string) => {
+export const checkUserAuthFx = createEffect(async (token: string | any) => {
+  try {
+    const data = jwtDecode(token)
+
+    const { email, id, name, roles } = data as IUser
+
+    return { email, id, name, roles }
+  } catch (error) {
+    const axiosError = error as AxiosError
+
+    if (axiosError.response) {
+      if (axiosError.response.status === HTTPStatus.FORBIDDEN) {
+        return false
+      }
+    }
+
+    // toast.error((error as Error).message);
+  }
+})
+
+/* export const checkUserAuthFx = createEffect(async (url: string) => {
   try {
     const data = await api.get(url)
     const userDataCheck: IUser = await jwtDecode(data.data.accessToken)
@@ -62,7 +82,7 @@ export const checkUserAuthFx = createEffect(async (url: string) => {
 
     //toast.error((error as Error).message)
   }
-})
+}) */
 
 export const logoutFx = createEffect(async (url: string) => {
   try {
@@ -72,3 +92,27 @@ export const logoutFx = createEffect(async (url: string) => {
     toast.error((error as Error).message)
   }
 })
+
+/*
+
+
+export const checkUserAuthFx = createEffect(async (token: string | any) => {
+	try {
+		const data = jwt_decode(token);
+
+		const { email, id, username } = data as IUser;
+
+		return { email, id, username };
+	} catch (error) {
+		const axiosError = error as AxiosError;
+
+		if (axiosError.response) {
+			if (axiosError.response.status === HTTPStatus.FORBIDDEN) {
+				return false;
+			}
+		}
+
+		// toast.error((error as Error).message);
+	}
+});
+*/
