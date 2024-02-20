@@ -6,11 +6,11 @@ import useRedirectByAdmin from '@/hooks/useRedirectByAdmin'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 const Admin: NextPage = () => {
-  const { shouldAccessAllow } = useRedirectByAdmin(true)
+  const { shouldAccessAllow } = useRedirectByAdmin()
   const [isActive, setIsActive] = useState('products')
 
   const getDefaultTextGenerator = useCallback(() => 'Админ-панель', [])
-  const getTextGenerator = useCallback((param: string) => ({})[param],[])
+  const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (
     <>
@@ -25,25 +25,22 @@ const Admin: NextPage = () => {
 
             <div className={styles.tabs}>
               <button
-                className={`${styles.tab} ${
-                  isActive === 'products' && styles.tab_active
-                }`}
+                className={`${styles.tab} ${isActive === 'products' && styles.tab_active
+                  }`}
                 onClick={() => setIsActive('products')}
               >
                 Товары
               </button>
               <button
-                className={`${styles.tab} ${
-                  isActive === 'orders' && styles.tab_active
-                }`}
+                className={`${styles.tab} ${isActive === 'orders' && styles.tab_active
+                  }`}
                 onClick={() => setIsActive('orders')}
               >
                 Заказы
               </button>
               <button
-                className={`${styles.tab} ${
-                  isActive === 'users' && styles.tab_active
-                }`}
+                className={`${styles.tab} ${isActive === 'users' && styles.tab_active
+                  }`}
                 onClick={() => setIsActive('users')}
               >
                 Пользователи

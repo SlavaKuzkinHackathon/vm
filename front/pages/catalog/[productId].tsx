@@ -12,7 +12,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
 
 const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
-  const { shouldLoadContent } = useRedirectByUserCheck()
+  const { shouldLoadContent } = useRedirectByUserCheck(true)
   const auth = useStore($auth)
   const productOne = useStore($productOne)
   const router = useRouter()

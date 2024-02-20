@@ -23,64 +23,40 @@ const useRedirectByAdmin = (isAdminPage = false) => {
 
   const checkUser = async () => {
     if (auth) {
-      const token = localStorage.getItem('/auth/check-auth')
-      const user = await checkUserAuthFx(token)
-      //const isAdmin = user.roles.findIndex((role) => role.id === 2) !== -1
-      const isAdmin = user
-      
-      if (isAdmin) {
-        setAuth(isAdminPage)
-        setshouldAccessAllow(true)
-        return
-      }
-    }
-    router.push('/')
-  }
-
-  return { shouldAccessAllow }
-}
-
-export default useRedirectByAdmin
-
-
-/* import { checkUserAuthFx } from '@/app/api/auth'
-import { $auth, $user, setAuth, setUser } from '@/context/user'
-import { useStore } from 'effector-react'
-import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
-
-const useRedirectByAdmin = (isAdminPage = false) => {
-  const user = useStore($user)
-  const auth = useStore($auth)
-
-  const [shouldAccessAllow, setshouldAccessAllow] = useState(false)
-
-  const router = useRouter()
-
-  const shouldAccessAuth = useRef(true)
-
-  useEffect(() => {
-    if (shouldAccessAuth.current) {
-      shouldAccessAuth.current = false
-      checkUser()
-    }
-  }, [])
-
-  const checkUser = async () => {
-    if (auth) {
       const isAdmin = user.roles.findIndex((role) => role.id === 2) !== -1
-      
+
+   /*    if (isAdminPage) {
+        if (!isAdmin) {
+          setAuth(isAdmin)
+          setshouldAccessAllow(true)
+          return
+        } else {
+          router.push('/')
+        }
+      } */
+
       if (isAdmin) {
-        setAuth(isAdminPage)
+        setUser(user)
         setshouldAccessAllow(true)
         return
       }
+
+      router.push('/')
     }
-    router.push('/')
+
+    /*  if (auth) {
+       const isAdmin = user.roles.findIndex((role) => role.id === 2) !== -1
+       
+       if (isAdmin) {
+         setAuth(isAdminPage)
+         setshouldAccessAllow(true)
+         return
+       }
+     }
+     router.push('/') */
   }
 
   return { shouldAccessAllow }
 }
 
 export default useRedirectByAdmin
- */

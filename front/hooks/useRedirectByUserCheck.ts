@@ -20,8 +20,23 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
     const user = await checkUserAuthFx(token)
 
     if (isAuthPage) {
-      if (user) {
-        setUser(user)
+      if (!user) {
+        setShouldLoadContent(true)
+        return
+      }
+
+      router.push('/')
+      return
+    }
+
+    if (user) {
+      setAuth(true)
+      setShouldLoadContent(true)
+      return
+    }
+    /* if (isAuthPage) {
+      if (!user) {
+        //setUser(user)
         setShouldLoadContent(true)
         return
       } else {
@@ -33,7 +48,7 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
       setUser(user)
       setShouldLoadContent(true)
       return
-    }
+    } */
 
     router.push('/')
   }
@@ -95,39 +110,43 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 const useUserCheck = (isLockedPage = false) => {
-	const [allowAccess, setAllowAccess] = useState(false);
-	const router = useRouter();
-	const shouldCheckAuth = useRef(true);
+  const [allowAccess, setAllowAccess] = useState(false);
+  const router = useRouter();
+  const shouldCheckAuth = useRef(true);
 
-	useEffect(() => {
-		if (shouldCheckAuth.current) {
-			shouldCheckAuth.current = false;
-			checkUser();
-		}
-	}, []);
+  useEffect(() => {
+    if (shouldCheckAuth.current) {
+      shouldCheckAuth.current = false;
+      checkUser();
+    }
+  }, []);
 
-	const checkUser = async () => {
-		const token = localStorage.getItem('auth_connection');
-		const user = await checkUserAuthFx(token);
+  const checkUser = async () => {
+    const token = localStorage.getItem('auth_connection');
+    const user = await checkUserAuthFx(token);
 
-		if (isLockedPage) {
-			if (user) {
-				setUser(user);
-				setAllowAccess(true);
-			} else {
-				router.push('/');
-			}
-		}
+    if (isLockedPage) {
+      if (user) {
+        setUser(user);
+        setAllowAccess(true);
+      } else {
+        router.push('/');
+      }
+    }
 
-		if (user) {
-			setUser(user);
-			setAllowAccess(true);
-		}
-	};
+    if (user) {
+      setUser(user);
+      setAllowAccess(true);
+    }
+  };
 
-	return { allowAccess };
+  return { allowAccess };
 };
 
 export default useUserCheck;
+
+*/
+
+/*
 
 */
