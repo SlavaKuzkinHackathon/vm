@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import Head from 'next/head'
 import { IQueryParams } from '@/types/catalog'
 import { useStore } from 'effector-react'
-import { $auth } from '@/context/user'
 import { $productOne, setProductOne } from '@/context/productOne'
 import { getProductFx } from '@/app/api/products'
 import ProductPage from '@/components/templates/ProductPage/ProductPage'
@@ -13,7 +12,6 @@ import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
 
 const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
   const { shouldLoadContent } = useRedirectByUserCheck(true)
-  const auth = useStore($auth)
   const productOne = useStore($productOne)
   const router = useRouter()
   const [error, setError] = useState(false)

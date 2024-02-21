@@ -16,14 +16,13 @@ import {
 } from '@/context/shopping-cart'
 import CartPopupItem from './CartPopupItem'
 import { getCartItemsFx } from '@/app/api/shopping-cart'
-import { $auth, $user } from '@/context/user'
+import {$user } from '@/context/user'
 import { formatPrice } from '@/utils/common'
 
 const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
   ({ open, setOpen }, ref) => {
     const mode = useStore($mode)
     const user = useStore($user)
-    const auth = useStore($auth)
     const totalPrice = useStore($totalPrice)
     const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
     const shoppingCart = useStore($shoppingCart)
@@ -33,7 +32,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
 
     useEffect(() => {
       loadCartItems()
-    }, [auth, user.id])
+    }, [user.id])
 
     useEffect(() => {
       setTotalPrice(
@@ -42,7 +41,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
           0
         )
       )
-    }, [shoppingCart, auth])
+    }, [shoppingCart])
 
     const loadCartItems = async () => {
       try {

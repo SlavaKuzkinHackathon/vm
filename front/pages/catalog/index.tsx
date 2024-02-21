@@ -3,12 +3,9 @@ import Head from 'next/head'
 import CatalogPage from '@/components/templates/CatalogPage/CatalogPage'
 import { IQueryParams } from '@/types/catalog'
 import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
-import { useStore } from 'effector-react'
-import { $auth } from '@/context/user'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 const Catalog = ({ query }: { query: IQueryParams }) => {
-  const auth = useStore($auth)
  // const { shouldLoadContent } = useRedirectByUserCheck()
 
   const getDefaultTextGenerator = useCallback(() => 'Каталог', [])

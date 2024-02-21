@@ -10,7 +10,6 @@ import { $shoppingCart } from '@/context/shopping-cart'
 import { AnimatePresence, motion } from 'framer-motion'
 import DashboardSlider from '@/components/modules/HomePage/DashboardSlider'
 import CartAlert from '@/components/modules/HomePage/CartAlert'
-import { $auth } from '@/context/user'
 
 const HomePage = () => {
   const [newDivans, setNewDivans] = useState<IProduct[]>()
@@ -21,7 +20,6 @@ const HomePage = () => {
   const [showAlert, setShowAlert] = useState(!!shoppingCart.length)
 
   const mode = useStore($mode)
-  const auth = useStore($auth)
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   useEffect(() => {
@@ -70,7 +68,6 @@ const HomePage = () => {
   return (
     <section className={styles.dashboard}>
       <div className={`container ${styles.dashboard__container}`}>
-        {auth && (
           <AnimatePresence>
             {showAlert && (
               <motion.div
@@ -89,7 +86,6 @@ const HomePage = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        )}
         <div className={styles.dashboard__brands}>
           <DivansSlider />
         </div>
