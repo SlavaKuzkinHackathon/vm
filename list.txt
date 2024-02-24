@@ -325,4 +325,49 @@ qweasdzxcO1$
 http://91.236.198.175/api
 
 
+sudo touch /etc/nginx/sites-available/sk9.site.conf
+sudo touch /etc/nginx/sites-available/autosk.ru.conf
+
+
+server {
+   server_name sk9.site www.sk9.site;
+   location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+  }
+}
+
+
+server {
+  server_name autosk.ru;
+    location / {
+    proxy_pass http://localhost:5000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+
+
+
+
+sudo ln -s /etc/nginx/sites-available/api.domain.com.conf /etc/nginx/sites-enabled/autosk.ru.conf
+sudo ln -s /etc/nginx/sites-available/domain.com.conf /etc/nginx/sites-enabled/sk9.site.conf
+sudo systemctl start nginx
+
+
+
+sudo snap install certbot --classic 
+sudo certbot --nginx -d sk9.site -d www.sk9.site -d autosk.ru
+
+#Only valid for 90 days, test the renewal process with
+sudo certbot renew --dry-
+
+
 
