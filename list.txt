@@ -302,11 +302,7 @@ CLIENT_URL=http://localhost:3000
 /////
 
 
-//////
-selectel.ru
-300127
-qweasdzxcO1$
-*/////
+
 
 
 //TODO
@@ -322,7 +318,8 @@ qweasdzxcO1$
 9. Ошибка Error initial props cancelled _getData
 
 
-http://91.236.198.175/api
+------------------------------------------------------- 
+nginx conf
 
 
 sudo touch /etc/nginx/sites-available/sk9.site.conf
@@ -357,8 +354,8 @@ server {
 
 
 
-sudo ln -s /etc/nginx/sites-available/api.domain.com.conf /etc/nginx/sites-enabled/autosk.ru.conf
-sudo ln -s /etc/nginx/sites-available/domain.com.conf /etc/nginx/sites-enabled/sk9.site.conf
+sudo ln -s /etc/nginx/sites-available/autosk.ru.conf /etc/nginx/sites-enabled/autosk.ru.conf
+sudo ln -s /etc/nginx/sites-available/sk9.site.conf /etc/nginx/sites-enabled/sk9.site.conf
 sudo systemctl start nginx
 
 
@@ -369,5 +366,74 @@ sudo certbot --nginx -d sk9.site -d www.sk9.site -d autosk.ru
 #Only valid for 90 days, test the renewal process with
 sudo certbot renew --dry-
 
+-------------------------------------------
+ Доступ к серверу
+ IP-адрес 79.174.93.76
+slava
+Логин: root
+Пароль: MRVuznvNjLglbdpV 
 
 
+
+--------------------------------------------
+
+порты подключения   
+netstat -ntlp | grep LISTEN
+
+--------------------------------------------
+
+изминения к стандартному порту подключения  
+vim /etc/ssh/sshd_config
+
+--------------------------------------------
+
+service ssh restart
+
+--------------------------------------------
+
+
+-------------------------------------------
+
+sudo apt install git-all
+
+-------------------------------------------
+
+git clone https://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@github.com/SlavaKuzkinHackathon/vm.git
+
+-------------------------------------------
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+-------------------------------------------
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+-------------------------------------------
+
+nvm install 16.19.1
+
+-------------------------------------------
+установка без апачи
+
+sudo apt-get remove nginx*
+sudo apt-get purge nginx*
+sudo apt install nginx
+
+-------------------------------------------
+удаление апачи
+sudo apt-get purge apache2 -y
+___________________________________________
+
+https://help.reg.ru/support/servery-vps/oblachnyye-servery/ustanovka-programmnogo-obespecheniya/kak-ustanovit-nginx-s-podderzhkoy-http-2-na-ubuntu-18-04-20-04
+
+-------------------------------------------
+
+
+
+
+-------------------------------------------
+
+
+
+-------------------------------------------
