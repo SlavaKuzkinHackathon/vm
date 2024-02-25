@@ -326,6 +326,8 @@ sudo touch /etc/nginx/sites-available/sk9.site.conf
 sudo touch /etc/nginx/sites-available/autosk.ru.conf
 
 
+
+
 server {
    server_name sk9.site www.sk9.site;
    location / {
@@ -366,14 +368,32 @@ sudo certbot --nginx -d sk9.site -d www.sk9.site -d autosk.ru
 #Only valid for 90 days, test the renewal process with
 sudo certbot renew --dry-
 
+
+https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+
 -------------------------------------------
- Доступ к серверу
- IP-адрес 79.174.93.76
-slava
+ Вы создали сервер «Emerald» с ISPmanager 6, 
+адрес 79.174.91.12
+
+Доступ к серверу
+
 Логин: root
-Пароль: MRVuznvNjLglbdpV 
+Пароль: SS0G9eYqy2F2a0LU 
 
+------
 
+Адрес: https://dnsadmin.hosting.reg.ru/manager/ispmgr
+Логин: ce95863457
+Пароль: xn74S6Gn_pWFXHi
+DNS: ns5.hosting.reg.ru • ns6.hosting.reg.ru 
+
+Логин: ce95863457
+Пароль: xn74S6Gn_pWFXHi
+
+Восстановил доступ к панели DNSAdmin.
+Прилагаю доступы:
+Login: ce95863457
+Password: xn74S6Gn_pWFXHi
 
 --------------------------------------------
 
