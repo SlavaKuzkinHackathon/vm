@@ -356,6 +356,9 @@ server {
 
 
 
+
+
+
 sudo ln -s /etc/nginx/sites-available/autosk.ru.conf /etc/nginx/sites-enabled/autosk.ru.conf
 sudo ln -s /etc/nginx/sites-available/sk9.site.conf /etc/nginx/sites-enabled/sk9.site.conf
 sudo systemctl start nginx
