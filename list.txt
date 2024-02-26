@@ -404,12 +404,19 @@ server {
  2 variant
 http://79.174.91.12:3001/
 
+ proxy_pass http://79.174.91.12:3001;
+ proxy_set_header Host $host;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
+ proxy_set_header X-Forwarded-Proto $scheme;
+ add_header Access-Control-Allow-Origin *;
+
 location / {
             proxy_pass $scheme://79.174.91.12:3001/;
-            proxy_redirect     off;
-            proxy_set_header   Host             $host;
-            proxy_set_header   X-Real-IP        $remote_addr;
-            proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+            proxy_redirect off;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
 return 301 http://79.174.91.12:3001;
