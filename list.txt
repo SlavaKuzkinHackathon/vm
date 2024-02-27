@@ -369,6 +369,7 @@ sudo snap install certbot --classic
 sudo certbot --nginx -d sk9.site -d www.sk9.site -d autosk.ru
 sudo certbot --nginx -d sk9.site -d www.sk9.site 
 
+
 #Only valid for 90 days, test the renewal process with
 sudo certbot renew --dry-
 
@@ -421,7 +422,6 @@ proxy_pass http://79.174.91.12:3001;
 location / {
             proxy_pass $scheme://79.174.91.12:3001/;
             proxy_redirect off;
-            proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
@@ -430,6 +430,9 @@ return 301 http://79.174.91.12:3001;
 
 server {
     server_name sk9.site www.sk9.site;
+
+    proxy_set_header Host $proxy_host;
+    proxy_set_header X-Real-IP $remote_addr;
 
     location / {    # Frontend
         proxy_pass http://localhost:3000;
@@ -445,13 +448,37 @@ server {
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
 }
 
 
+III variant
 
+    server {
+    listen 80;
+    server_name auth.example.com;
+    return 301 https://auth.example.com$request_uri;
+    }
+
+    server {
+    listen 443;
+    ssl on;
+    server_name auth.example.com;
+    ssl_certificate /etc/nginx/ssl/example.com_bundle;
+    ssl_certificate_key /etc/nginx/ssl/example.com.key;
+
+    location / {
+    proxy_pass http://79.174.91.12:3001;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    add_header Access-Control-Allow-Origin *;
+    }
+
+    
+    }
 
 
 
