@@ -420,7 +420,7 @@ proxy_pass http://79.174.91.12:3001;
 
 
 location / {
-            proxy_pass $scheme://79.174.91.12:3001/;
+            proxy_pass $scheme://localhost:3001/;
             proxy_redirect off;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
