@@ -419,8 +419,8 @@ proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
 proxy_pass http://79.174.91.12:3001;
 
 
-location / {
-            proxy_pass $scheme://localhost:3001/;
+location /api/ {    # Backend
+            proxy_pass $scheme:79.174.91.12:3001;;
             proxy_redirect off;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -451,6 +451,11 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+
+
+listen 443;
+return 301 http://79.174.91.12:3001$request_uri;
+return 301 http://$host$request_uri;
 
 
 III variant
