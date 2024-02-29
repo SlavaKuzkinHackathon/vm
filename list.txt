@@ -510,8 +510,10 @@ proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
 proxy_pass http://your_server_host:your_server_port;
     }
 
+add_header Access-Control-Allow-Origin *;
 
 
+add_header 'Access-Control-Allow-Origin' $allow_origin;
 
     location / {
         root /var/www/mern-app/frontend/build;
@@ -528,7 +530,29 @@ proxy_pass http://your_server_host:your_server_port;
     }
 
 
+map $http_origin $allow_origin {
+    ~^https?://(.*\.)?my-domain.com(:\d+)?$ $http_origin;
+    # NGINX won't set empty string headers, so if no match, header is unset.
+    default "";
+}
 
+location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
+   if ( $http_origin ~* (https?://(.+\.)?(pop.sk9|sk9)\.(?:me|site|com)$) ) {
+      add_header "Access-Control-Allow-Origin" "$http_origin";
+   }
+}
+
+add_header 'Access-Control-Allow-Origin' 'origin'
+
+if ($http_origin ~* (https?://.*\.mydomain.example(:[0-9]+)?)) {
+  set $cors "true";
+}
+if ($cors = "true") {
+  add_header 'Access-Control-Allow-Origin' "$http_origin";
+  add_header 'X-Frame-Options' "ALLOW FROM $http_origin";
+  add_header 'Access-Control-Allow-Credentials' 'true';
+  add_header 'Vary' 'Origin';
+}
 
 
 /******-----------------------***-----------------
