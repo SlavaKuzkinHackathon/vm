@@ -368,6 +368,7 @@ sudo systemctl start nginx
 sudo snap install certbot --classic 
 sudo certbot --nginx -d sk9.site -d www.sk9.site -d autosk.ru
 sudo certbot --nginx -d sk9.site -d www.sk9.site 
+sudo certbot --nginx -d pop.sk9.site
 
 
 #Only valid for 90 days, test the renewal process with
@@ -452,6 +453,26 @@ server {
     }
 }
 
+
+server {
+    server_name pop.sk9.site;
+    location / {    # Backend
+        proxy_pass http://79.174.91.12:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+location /api/ {    # Backend
+        proxy_pass http://79.174.91.12:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_cache_bypass $http_upgrade;
+}
 
 listen 443;
 return 301 http://79.174.91.12:3001$request_uri;
