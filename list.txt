@@ -381,178 +381,87 @@ https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
 
 /****----------------------****/
 nginx для одного домена front and back
-
 server {
-    server_name sk9.site www.sk9.site;
+   server_name sk9.site www.sk9.site;
 
-    location / {    # Frontend
+
+    location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
+
+
     }
 
-      location /api/ {    # Backend
-        proxy_pass http://localhost:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
- 2 variant
-http://79.174.91.12:3001/
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sk9.site-0001/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sk9.site-0001/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
- proxy_pass http://79.174.91.12:3001;
- proxy_set_header Host $host;
- proxy_set_header X-Real-IP $remote_addr;
- proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
- proxy_set_header X-Forwarded-Proto $scheme;
- add_header Access-Control-Allow-Origin *;
-
-proxy_set_header   X-Forwarded-Proto $scheme;
-proxy_set_header   Host              $http_host;
-proxy_set_header   X-Real-IP         $remote_addr;
-proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
-proxy_pass http://79.174.91.12:3001;
-
-
-location /api/ {    # Backend
-            proxy_pass $scheme:79.174.91.12:3001;;
-            proxy_redirect off;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-
-return 301 http://79.174.91.12:3001;
-
-server {
-    server_name sk9.site www.sk9.site;
-
-    proxy_set_header Host $proxy_host;
-    proxy_set_header X-Real-IP $remote_addr;
-
-    location / {    # Frontend
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-      location /api/ {    # Backend
-        proxy_pass http://79.174.91.12:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_cache_bypass $http_upgrade;
-    }
 }
 
 
 server {
     server_name pop.sk9.site;
+
+
     location / {    # Backend
-        proxy_pass http://79.174.91.12:3001;
+proxy_pass http://localhost:3001;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_cache_bypass $http_upgrade;
+        #add_header Access-Control-Allow-Origin *;
     }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/pop.sk9.site/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/pop.sk9.site/privkey.pem; # managed by Certbot
+include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
 }
 
 
-location /api/ {    # Backend
-        proxy_pass http://79.174.91.12:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_cache_bypass $http_upgrade;
-}
 
-listen 443;
-return 301 http://79.174.91.12:3001$request_uri;
-return 301 http://$host$request_uri;
+server {
+    if ($host = www.sk9.site) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
 
 
-III variant
-
-    server {
+    if ($host = sk9.site) {
+        return 301 https://$host$request_uri;
+     server_name sk9.site www.sk9.site;
     listen 80;
-    server_name auth.example.com;
-    return 301 https://auth.example.com$request_uri;
-    }
+    return 404; # managed by Certbot
 
-    server {
-    listen 443;
-    ssl on;
-    server_name auth.example.com;
-    ssl_certificate /etc/nginx/ssl/example.com_bundle;
-    ssl_certificate_key /etc/nginx/ssl/example.com.key;
-
-    location / {
-    proxy_pass http://79.174.91.12:3001;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    add_header Access-Control-Allow-Origin *;
-    }
-
-proxy_set_header   X-Forwarded-Proto $scheme;
-proxy_set_header   Host              $http_host;
-proxy_set_header   X-Real-IP         $remote_addr;
-proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
-proxy_pass http://your_server_host:your_server_port;
-    }
-
-add_header Access-Control-Allow-Origin *;
-
-
-add_header 'Access-Control-Allow-Origin' $allow_origin;
-
-    location / {
-        root /var/www/mern-app/frontend/build;
-        try_files $uri /index.html;
-    }
-
-    location /api {
-        proxy_pass http://localhost:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-
-map $http_origin $allow_origin {
-    ~^https?://(.*\.)?my-domain.com(:\d+)?$ $http_origin;
-    # NGINX won't set empty string headers, so if no match, header is unset.
-    default "";
+ }
 }
 
-location ~* \.(?:ttf|ttc|otf|eot|woff|woff2)$ {
-   if ( $http_origin ~* (https?://(.+\.)?(pop.sk9|sk9)\.(?:me|site|com)$) ) {
-      add_header "Access-Control-Allow-Origin" "$http_origin";
-   }
+server {
+    if ($host = pop.sk9.site) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+       server_name sk9.site www.sk9.site;
+    listen 80;
+    return 404; # managed by Certbot
+
 }
 
-add_header 'Access-Control-Allow-Origin' 'origin'
 
-if ($http_origin ~* (https?://.*\.mydomain.example(:[0-9]+)?)) {
-  set $cors "true";
-}
-if ($cors = "true") {
-  add_header 'Access-Control-Allow-Origin' "$http_origin";
-  add_header 'X-Frame-Options' "ALLOW FROM $http_origin";
-  add_header 'Access-Control-Allow-Credentials' 'true';
-  add_header 'Vary' 'Origin';
-}
+server {
+    if ($host = pop.sk9.site) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+}                                                                                                                             
 
 
 /******-----------------------***-----------------
@@ -636,12 +545,23 @@ ___________________________________________
 https://help.reg.ru/support/servery-vps/oblachnyye-servery/ustanovka-programmnogo-obespecheniya/kak-ustanovit-nginx-s-podderzhkoy-http-2-na-ubuntu-18-04-20-04
 
 -------------------------------------------
+https://russianblogs.com/article/35681189533/
+-------------------------------------------
+cd vm/back
+pm2 start dist/main.js --name "back"
 
-
-
+cd vm/front
+pm2 start npm --name "front" -- start
 
 -------------------------------------------
-
-
-
+$ pm2 logs Показать все журналы процессов
+$ pm2 stop all Остановить все процессы
+$ pm2 restart all Перезапустить все процессы
+$ pm2 reload all Остановить процесс перезагрузки через 0 секунд (для СЕТЕВОГО процесса)
+$ pm2 stop 0 Остановить указанный процесс
+$ pm2 restart 0 Перезапустить указанный процесс
+$ pm2 startup Сгенерируйте сценарий инициализации, чтобы поддерживать процесс
+$ pm2 web Запустите надежную конечную точку компьютерного API (http://localhost:9615)
+$ pm2 delete 0 Убить указанный процесс
+$ pm2 delete all Убить все процессы
 -------------------------------------------
