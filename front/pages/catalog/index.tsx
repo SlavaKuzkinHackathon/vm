@@ -6,7 +6,7 @@ import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 const Catalog = ({ query }: { query: IQueryParams }) => {
- // const { shouldLoadContent } = useRedirectByUserCheck()
+  const { shouldLoadContent } = useRedirectByUserCheck(true)
 
   const getDefaultTextGenerator = useCallback(() => 'Каталог', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
@@ -14,9 +14,7 @@ const Catalog = ({ query }: { query: IQueryParams }) => {
   return (
     <>
       <Head>
-        <title>
-          Ваша мебель |  {/* {shouldLoadContent ? */} ' Каталог' : ''{/* }  */}
-        </title>
+        <title>Ваша мебель | {shouldLoadContent ? ' Каталог' : ''}</title>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,8 +24,7 @@ const Catalog = ({ query }: { query: IQueryParams }) => {
           getDefaultTextGenerator={getDefaultTextGenerator}
           getTextGenerator={getTextGenerator}
         />
-        {/* {shouldLoadContent &&  */}
-        <CatalogPage query={query} /> {/* } */}
+        <CatalogPage query={query} />
         <div className="overlay" />
       </main>
     </>

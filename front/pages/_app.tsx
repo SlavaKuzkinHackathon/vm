@@ -18,6 +18,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     moutned && (
       <>
+      <div id="__next"></div>
       <NextNProgress color='#008009'/>
         <Layout>
           <Component {...pageProps} />

@@ -62,7 +62,6 @@ const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
       {error ? (
         <Custom404 />
       ) : (
-        /* shouldLoadContent && ( */
         <main>
           <Breadcrumbs
             getDefaultTextGenerator={getDefaultTextGenerator}
@@ -71,7 +70,6 @@ const CatalogProductPage = ({ query }: { query: IQueryParams }) => {
           <ProductPage />
           <div className="overlay" />
         </main>
-        /* ) */
       )}
     </>
   )
