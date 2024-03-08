@@ -4,6 +4,7 @@ import { useUnit } from 'effector-react'
 
 import styles from '@/styles/admin/createProduct.module.scss'
 import { $isPending, formSubmitted, productCreated } from './index.model'
+import { Button } from '@/components/ui/atoms/Button'
 
 const CreateProduct = () => {
   const [isPending] = useUnit([$isPending])
@@ -101,7 +102,9 @@ const CreateProduct = () => {
         {...register('image')}
         type="file"/>
       </div>
-       <button >Создать</button>
+       <Button
+       color='secondary'
+       >Создать</Button>
     </form>
   )
 }

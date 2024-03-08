@@ -131,13 +131,13 @@ export const UpdateProductItem = ({ product }: ProductItemProps) => {
           height={60}
         />
       </div>
-      <div>{product.id}</div>
-      <div>{product.name}</div>
-      <div>{product.description}</div>
-      <div>{product.model}</div>
-      <div>{product.price}</div>
-      <div>{product.in_stock}</div>
-      <div>{product.rating}</div>
+      <div className={styles.p}>№: {product.id}</div>
+      <div>имя: {product.name}</div>
+      <div>описание: {product.description}</div>
+      <div>модель: {product.model}</div>
+      <div>цена: {product.price}</div>
+      <div>кол-во: {product.in_stock}</div>
+      <div>рейтинг: {product.rating}</div>
 
       <div>
         <Button

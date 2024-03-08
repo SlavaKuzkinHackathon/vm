@@ -21,7 +21,7 @@ const Admin: NextPage = () => {
       {shouldAccessAllow && (
         <section className={styles.admin}>
           <div className={styles.header}>
-            <h1 className={styles.name}>Админ-панель</h1>
+            <h5 className={styles.name}>Админ-панель</h5>
 
             <div className={styles.tabs}>
               <button

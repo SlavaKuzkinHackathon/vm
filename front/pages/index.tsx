@@ -14,6 +14,16 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta
+          name="description"
+          content="Продажа диванов в Новосибирске.
+            Модели мягкой мебели эконом класса."
+        />
+        <meta
+          name="keywords"
+          content="Купить диваны, мягкую мебель, недорого, от производителя в Новосибирске"
+        />
       </Head>
       <main>
         <Breadcrumbs
