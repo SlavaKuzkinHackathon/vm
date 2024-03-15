@@ -27,18 +27,11 @@ import { PaymentModule } from './payment/payment.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-    /*   dialectOptions: {
+      dialectOptions: {
         ssl: true,
-        native: true
-      }, */
-      models: [
-        User,
-        Product,
-        Role,
-        UserRole,
-        Token,
-        Cart,
-      ],
+        native: true,
+      },
+      models: [User, Product, Role, UserRole, Token, Cart],
       autoLoadModels: true,
       sync: { alter: true },
     }),
@@ -51,9 +44,9 @@ import { PaymentModule } from './payment/payment.module';
     TokenModule,
     FilesModule,
     CartModule,
-    PaymentModule
+    PaymentModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

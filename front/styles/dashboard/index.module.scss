@@ -275,10 +275,12 @@
   }
 
   &__slider {
-    margin-bottom: 36px;
+    margin-bottom: 25px;
+
+    position: relative;
 
     @media (max-width: 800px) {
-      margin-bottom: 33px;
+      margin-bottom: 25px;
     }
   }
 
@@ -291,7 +293,6 @@
     transition:
       transform 0.2s ease-in-out,
       box-shadow 0.2s ease-in-out;
-      
 
     @media (max-width: 560px) {
       padding: 16px 8px;
@@ -318,7 +319,7 @@
     &__title {
       margin: 0;
       font-weight: 400;
-      margin-bottom: 24px;
+      margin-bottom: 17px;
       font-size: 18px;
       color: #4e4c4c;
       text-overflow: ellipsis;
@@ -333,7 +334,7 @@
 
     &__code {
       display: block;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       font-size: 14px;
       color: #7b7b7b;
       text-overflow: ellipsis;
