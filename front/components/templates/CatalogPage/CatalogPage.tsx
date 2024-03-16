@@ -45,6 +45,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
 
   const router = useRouter()
 
+console.log('products.count', products.count);
 console.log('pageCount', pageCount);
 
 

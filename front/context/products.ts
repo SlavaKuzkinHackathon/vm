@@ -1,5 +1,5 @@
 import { IFilterCheckboxItem } from '@/types/catalog'
-import { IProducts, IProduct } from '@/types/product'
+import { IProducts, IProduct } from '@/types/productsm'
 import { productModels } from '@/utils/catalog'
 import { createDomain } from 'effector-next'
 
