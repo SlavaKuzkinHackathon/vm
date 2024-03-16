@@ -2,7 +2,7 @@
 import Slider from 'react-slick'
 import { useStore } from 'effector-react'
 import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+//import 'slick-carousel/slick/slick-theme.css'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { $mode } from '@/context/mode'
@@ -10,9 +10,10 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { IDashboardSlider } from '@/types/dashboard'
 
 import { formatPrice } from '@/utils/common'
+import { getImageURL } from '@/utils/getImageURL'
 import styles from '@/styles/dashboard/index.module.scss'
 import skeletonStyles from '@/styles/skeleton/index.module.scss'
-import { getImageURL } from '@/utils/getImageURL'
+
 
 const DashboardSlider = ({
   items,
@@ -32,9 +33,18 @@ const DashboardSlider = ({
     slider.forEach((item) => {
       const list = item.querySelector('.slick-list') as HTMLElement
 
-      list.style.height = isMedia560 ? '276px' : '390px'
+      list.style.height = isMedia560 ? '276px' : '399px'
       list.style.padding = '0 5px'
       list.style.marginRight = isMedia560 ? '-8px' : isMedia800 ? '-15px' : '0'
+
+      list.style.display = 'flex'
+      list.style.alignItems ='center'
+      list.style.justifyContent = 'center'
+      list.style.position = 'relative'
+      list.style.flexDirection = 'column'
+
+
+     
     })
   }, [isMedia560, isMedia800])
 

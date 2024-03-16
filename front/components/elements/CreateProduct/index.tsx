@@ -1,11 +1,8 @@
 import { useEffect, useId } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { useUnit } from 'effector-react'
-
 import styles from '@/styles/admin/createProduct.module.scss'
 import { $isPending, formSubmitted, productCreated } from './index.model'
-import { Button } from '@/components/ui/atoms/Button'
-
 const CreateProduct = () => {
   const [isPending] = useUnit([$isPending])
 
@@ -33,7 +30,6 @@ const CreateProduct = () => {
       rating: data.rating,
       image: data.image,
     })
-    
   })
 
   useEffect(() => {
@@ -43,11 +39,10 @@ const CreateProduct = () => {
   }, [reset])
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={onSubmit}
-    >
+    <form className={styles.form} onSubmit={onSubmit}>
       <h1>Создать товар</h1>
+
+      <div className={styles.input_text}>* Введите наименование</div>
       <div className={styles.form_item}>
         <input
           {...register('name', { required: '0Name is required!' })}
@@ -56,6 +51,7 @@ const CreateProduct = () => {
         />
       </div>
 
+      <div className={styles.input_text}>* Введите описание товара</div>
       <div className={styles.form_item}>
         <input
           {...register('description')}
@@ -63,16 +59,16 @@ const CreateProduct = () => {
           placeholder="Описание"
         />
       </div>
+
+      <div className={styles.input_text}>* Введите модель товара</div>
       <div className={styles.form_item}>
-        <input
-          {...register('model')}
-          type="text"
-          placeholder="Модель"
-        />
+        <input {...register('model')} type="text" placeholder="Модель" />
       </div>
-      <div className={styles.form_item}>
+
+      <div className={styles.input_text}>* Введите стоимость число</div>
+      <div className={styles.form_item__price}>
         <input
-          placeholder="Стоимость"
+          placeholder="Стоимость число"
           className="form-control"
           type="number"
           {...register('price', {
@@ -81,30 +77,30 @@ const CreateProduct = () => {
           })}
         />
       </div>
-      <div className={styles.form_item}>
+
+      <div className={styles.input_text}>* Введите количество число</div>
+      <div className={styles.form_item__instock}>
         <input
           {...register('in_stock')}
           type="number"
-          placeholder="Количество"
+          placeholder="Количество число"
           className="form-control"
         />
       </div>
-      <div className={styles.form_item}>
+
+      <div className={styles.input_text}>* Введите рейтинг число</div>
+      <div className={styles.form_item__raiting}>
         <input
           {...register('rating')}
           type="number"
-          placeholder="Рейтинг"
+          placeholder="Рейтинг число"
           className="form-control"
         />
       </div>
-      <div className={styles.form_item}>
-        <input 
-        {...register('image')}
-        type="file"/>
+      <div>
+        <input className={styles.form_input} {...register('image')} type="file" />
       </div>
-       <Button
-       color='secondary'
-       >Создать</Button>
+      <button className={styles.button_create}>Создать</button>
     </form>
   )
 }

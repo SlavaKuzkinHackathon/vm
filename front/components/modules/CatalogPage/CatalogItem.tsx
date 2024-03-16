@@ -38,7 +38,7 @@ const CatalogItem = ({ item }: { item: IProduct }) => {
           <h3 className={styles.catalog__list__item__title}>{item.name}</h3>
         </Link>
         <span className={styles.catalog__list__item__code}>
-          Описание: {item.description}
+           {item.description}
         </span>
         <span className={styles.catalog__list__item__price}>
           {formatPrice(item.price)} ₽
