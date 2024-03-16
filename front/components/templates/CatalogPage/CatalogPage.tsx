@@ -16,15 +16,15 @@ import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import skeletonStyles from '@/styles/skeleton/index.module.scss'
 import CatalogItem from '@/components/modules/CatalogPage/CatalogItem'
-import ReactPaginate from 'react-paginate'
 import { IQueryParams } from '@/types/catalog'
 import { useRouter } from 'next/router'
-import { IProducts } from '@/types/productsm'
 import CatalogFilters from '@/components/modules/CatalogPage/CatalogFilters'
 import { usePopup } from '@/hooks/usePopup'
 import { checkQueryParams } from '@/utils/catalog'
 import FilterSvg from '@/components/elements/FilterSvg/FilterSvg'
+import { IProducts } from '@/types/productsm'
 import styles from '@/styles/catalog/index.module.scss'
+import ReactPaginate from 'react-paginate'
 
 const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const mode = useStore($mode)
@@ -36,7 +36,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const [priceRange, setPriceRange] = useState([5000, 150000])
   const [isPriceRangeChanged, setIsPriceRangeChanged] = useState(false)
   const [isFilterInQuery, setIsFilterInQuery] = useState(false)
-  const pageCount = Math.ceil(products.count / 20 || 1)
+  const pageCount = Math.ceil(products.count / 20) || 1
   const isValidOffset =
     query.offset && !isNaN(+query.offset) && +query.offset > 0
   const [currentPage, setCurrentPage] = useState(
@@ -45,9 +45,8 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
 
   const router = useRouter()
 
-console.log('products.count', products.count);
-console.log('pageCount', pageCount);
-
+  console.log('products.count', products.count)
+  console.log('pageCount', pageCount)
 
   const isAnyProductsModelerChecked = productModels.some((item) => item.checked)
   const resetFilterBtnDisabled = !(
