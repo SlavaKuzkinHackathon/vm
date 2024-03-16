@@ -36,7 +36,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const [priceRange, setPriceRange] = useState([5000, 150000])
   const [isPriceRangeChanged, setIsPriceRangeChanged] = useState(false)
   const [isFilterInQuery, setIsFilterInQuery] = useState(false)
-  const pageCount = Math.ceil(products.count / 20 || 20)
+  const pageCount = Math.ceil(products.count / 20)
   const isValidOffset =
     query.offset && !isNaN(+query.offset) && +query.offset > 0
   const [currentPage, setCurrentPage] = useState(
@@ -44,6 +44,9 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   )
 
   const router = useRouter()
+
+console.log('pageCount', pageCount);
+
 
   const isAnyProductsModelerChecked = productModels.some((item) => item.checked)
   const resetFilterBtnDisabled = !(
