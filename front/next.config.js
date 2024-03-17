@@ -29,6 +29,8 @@ if (process.env.NEXT_IMAGE_REMOTES !== '') {
 
 
 const nextConfig = {
+
+  swcMinify: false,
   reactStrictMode: true,
   sassOptions: {
     fiber: false,
