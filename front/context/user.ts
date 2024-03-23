@@ -2,6 +2,8 @@ import { IUser,} from '@/types/auth'
 import {
   createDomain,
 } from 'effector-next'
+import persist from 'effector-localstorage'
+
 
 const user = createDomain()
 
@@ -23,5 +25,5 @@ export const $auth = user
   .on(setAuth, (_, value) => value)
 
 
-
+  persist({ store: $user, key: 'user' })
 
