@@ -45,9 +45,6 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
 
   const router = useRouter()
 
-  console.log('products.count', products.count)
-  console.log('pageCount', pageCount)
-
   const isAnyProductsModelerChecked = productModels.some((item) => item.checked)
   const resetFilterBtnDisabled = !(
     isPriceRangeChanged || isAnyProductsModelerChecked

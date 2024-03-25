@@ -7,7 +7,7 @@ import {
   $totalPrice,
   setShoppingCart,
 } from '@/context/shopping-cart'
-import { $user, $userCity } from '@/context/user'
+import { $auth, $user, $userCity } from '@/context/user'
 import styles from '@/styles/order/index.module.scss'
 import { formatPrice } from '@/utils/common'
 import { useStore } from 'effector-react'
@@ -19,6 +19,7 @@ import spinnerStyles from '@/styles/spinner/index.module.scss'
 const OrderPage = () => {
   const mode = useStore($mode)
   const user = useStore($user)
+  const auth = useStore($auth)
   const userCity = useStore($userCity)
   const shoppingCart = useStore($shoppingCart)
   const totalPrice = useStore($totalPrice)

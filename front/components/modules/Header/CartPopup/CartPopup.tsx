@@ -4,7 +4,6 @@ import { $mode } from '@/context/mode'
 import { IWrappedComponentProps } from '@/types/common'
 import { AnimatePresence, motion } from 'framer-motion'
 import { withClickOutside } from '@/utils/withClickOutside'
-import styles from '@/styles/cartPopup/index.module.scss'
 import ShoppingCartSvg from '@/components/elements/ShoppingCartSvg/ShoppingCartSvg'
 import Link from 'next/link'
 import {
@@ -16,13 +15,16 @@ import {
 } from '@/context/shopping-cart'
 import CartPopupItem from './CartPopupItem'
 import { getCartItemsFx } from '@/app/api/shopping-cart'
-import {$user } from '@/context/user'
+import {$auth, $user } from '@/context/user'
 import { formatPrice } from '@/utils/common'
+import styles from '@/styles/cartPopup/index.module.scss'
 
 const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
   ({ open, setOpen }, ref) => {
     const mode = useStore($mode)
     const user = useStore($user)
+    const auth = useStore($auth)
+    
     const totalPrice = useStore($totalPrice)
     const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
     const shoppingCart = useStore($shoppingCart)
@@ -70,7 +72,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
             className={`${styles.cart__btn} ${darkModeClass}`}
             onClick={toggleCartDropDown}
           >
-            {!!shoppingCart.length && (
+            {auth && !!shoppingCart.length && (
               <span className={styles.cart__btn__count}>
                 {shoppingCart.length}
               </span>
@@ -93,7 +95,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
             >
               <h3 className={styles.cart__popup__title}>Корзина</h3>
               <ul className={styles.cart__popup__list}>
-                {shoppingCart.length ? (
+                {auth && shoppingCart.length ? (
                   shoppingCart.map((item) => (
                     <CartPopupItem key={item.id} item={item} />
                   ))
@@ -115,7 +117,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
                     Общая сумма заказа:
                   </span>
                   <span className={styles.cart__popup__footer__price}>
-                    {formatPrice(totalPrice)} ₽
+                    {auth && formatPrice(totalPrice)} ₽
                   </span>
                 </div>
                 <Link href="/order" passHref legacyBehavior>

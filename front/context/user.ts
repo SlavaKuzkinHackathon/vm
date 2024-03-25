@@ -26,4 +26,5 @@ export const $auth = user
 
 
   persist({ store: $user, key: 'user' })
+  persist({ store: $auth, key: 'auth' })
 

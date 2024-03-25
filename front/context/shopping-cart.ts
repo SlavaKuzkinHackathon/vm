@@ -1,4 +1,5 @@
 import { IShoppingCartItem } from '@/types/shopping-cart'
+import persist from 'effector-localstorage'
 import { createDomain } from 'effector-next'
 
 const shoppingCart = createDomain()
@@ -56,3 +57,7 @@ export const $totalPrice = shoppingCart
 export const $disableCart = shoppingCart
   .createStore<boolean>(false)
   .on(setDisableCart, (_, value) => value)
+
+
+persist({ store: $totalPrice, key: 'totalPrice' });
+persist({ store: $shoppingCart, key: 'shoppingCart' });
