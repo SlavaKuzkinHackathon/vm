@@ -16,7 +16,7 @@ export type ImageInputProps = {
   id?: string
 }
 
-const MegaByte = 1024 * 1024
+const MegaByte = 5120 * 5120
 
 export const ImageInput = ({
   maxFileSizeInBytes = MegaByte,
@@ -90,9 +90,9 @@ export const ImageInput = ({
         />
 
         <span className={classes.ImageInputInfo}>
-          {`Max file size: ${Math.round(maxFileSizeInBytes / MegaByte)} MB`}
+          {`Max file size: 3 MB`}
         </span>
-
+  {/* ${Math.round(maxFileSizeInBytes / MegaByte)} */}
         <label
           className={classes.ImageInputLabel}
           htmlFor={id}

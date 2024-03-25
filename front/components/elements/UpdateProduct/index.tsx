@@ -11,6 +11,7 @@ import {
   ImageInput,
 } from '@/components/ui/atoms/ImageInput'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 type ProductItemProps = {
   product: IProduct
@@ -22,6 +23,8 @@ export const UpdateProductItem = ({ product }: ProductItemProps) => {
     deleteProduct,
     updateProduct,
   ])
+
+  const router = useRouter()
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -51,7 +54,9 @@ export const UpdateProductItem = ({ product }: ProductItemProps) => {
         rating,
         image: icon.raw || undefined,
       })
+      
       setIsEditing(false)
+      
     } catch (error) {
       toast.error((error as Error).message)
     } finally {

@@ -25,15 +25,6 @@ const useRedirectByAdmin = (isAdminPage = false) => {
     if (auth) {
       const isAdmin = user.roles.findIndex((role) => role.id === 2) !== -1
 
-   /*    if (isAdminPage) {
-        if (!isAdmin) {
-          setAuth(isAdmin)
-          setshouldAccessAllow(true)
-          return
-        } else {
-          router.push('/')
-        }
-      } */
 
       if (isAdmin) {
         setUser(user)

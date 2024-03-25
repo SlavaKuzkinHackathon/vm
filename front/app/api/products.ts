@@ -1,6 +1,6 @@
 import { createEffect } from 'effector-next'
 import api from '../axiosClient'
-import { IProduct } from '@/types/product'
+import { IProduct } from '@/types/productsm'
 import {
   axiosInstance,
   ListDTO,
