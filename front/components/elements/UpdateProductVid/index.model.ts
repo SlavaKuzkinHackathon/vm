@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore, sample } from 'effector';
+/* import { createEffect, createEvent, createStore, sample } from 'effector';
 import { debounce, reset } from 'patronum';
 import * as productsApi from '@/app/api/products';
 import { ApiError, ListDTO } from '@/app/api/lib';
@@ -86,7 +86,7 @@ $pageNumber.on(fetchProductsFx.doneData, (_, { pageNumber }) => pageNumber);
 
 fetchProductsFx.failData.watch((e) => toast.error(e.message));
 
-$isPending.on(fetchProductsFx.finally, () => false);
+$isPending.on(fetchProductsFx.finally, () => false); */
 
 /*
 import { createEffect, createEvent, createStore, sample } from 'effector';

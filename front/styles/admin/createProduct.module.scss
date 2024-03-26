@@ -2,24 +2,22 @@
   align-items: flex-end;
 }
 
-
-.input_text{
-    color: #f31505;
-    font-size: 12px;
+.input_text {
+  color: #f31505;
+  font-size: 12px;
 }
 
 .form_item {
   margin-right: 50px;
   margin-bottom: 9px;
 
-  &__raiting {
-    content: 'Рейтинг число';
-  }
-  &__instock{
-    content: 'Количество число';
+  &__select {
+    width: 180px;
+    height: 33px;
   }
   &__price{
-    content: 'Стоимость число';
+    content:none;
+    
   }
 }
 
@@ -28,6 +26,8 @@
   cursor: pointer;
   padding-top: 8px;
   margin-bottom: 8px;
+  margin-right: 50px;
+  margin-bottom: 9px;
 }
 
 .button_create {

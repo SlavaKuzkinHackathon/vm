@@ -3,10 +3,14 @@ import { useForm, Controller } from 'react-hook-form'
 import { useUnit } from 'effector-react'
 import styles from '@/styles/admin/createProduct.module.scss'
 import { $isPending, formSubmitted, productCreated } from './index.model'
+import { useRouter } from 'next/router'
+
 const CreateProduct = () => {
   const [isPending] = useUnit([$isPending])
 
   const formSubmittedEvent = useUnit(formSubmitted)
+
+  const router = useRouter()
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -34,7 +38,7 @@ const CreateProduct = () => {
 
   useEffect(() => {
     return productCreated.watch(() => {
-      reset()
+      
     })
   }, [reset])
 
@@ -45,7 +49,7 @@ const CreateProduct = () => {
       <div className={styles.input_text}>* Введите наименование</div>
       <div className={styles.form_item}>
         <input
-          {...register('name', { required: '0Name is required!' })}
+          {...register('name', { required: 'Имя обязательно!' })}
           placeholder="Наименование"
           type="text"
         />
@@ -62,7 +66,14 @@ const CreateProduct = () => {
 
       <div className={styles.input_text}>* Введите модель товара</div>
       <div className={styles.form_item}>
-        <input {...register('model')} type="text" placeholder="Модель" />
+        {/* <input {...register('model')} type="text" placeholder="Модель" /> */}
+
+        <select {...register('model')} className={styles.form_item__select}>
+          <option value="">--Выберите модель--</option>
+          <option value="Диван прямой">Диван прямой</option>
+          <option value="Угловой диван">Угловой диван</option>
+          <option value="Тахта">Тахта</option>
+        </select>
       </div>
 
       <div className={styles.input_text}>* Введите стоимость число</div>
@@ -72,7 +83,7 @@ const CreateProduct = () => {
           className="form-control"
           type="number"
           {...register('price', {
-            required: 'Price is required!',
+            required: 'Цена обязательна!',
             valueAsNumber: true,
           })}
         />
@@ -98,7 +109,11 @@ const CreateProduct = () => {
         />
       </div>
       <div>
-        <input className={styles.form_input} {...register('image')} type="file" />
+        <input
+          className={styles.form_input}
+          {...register('image')}
+          type="file"
+        />
       </div>
       <button className={styles.button_create}>Создать</button>
     </form>

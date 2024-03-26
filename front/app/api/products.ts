@@ -1,5 +1,6 @@
 import { createEffect } from 'effector-next'
 import api from '../axiosClient'
+//import { IProduct } from '@/types/product'
 import { IProduct } from '@/types/productsm'
 import {
   axiosInstance,
@@ -41,6 +42,7 @@ const BASE_ROUTE = '/products'
 const ProductResponseSchema = createResponseSchema(ProductSchema)
 const ProductListSchema = createListResponseSchema(ProductSchema)
 
+
 export type CreateProductDTO = {
   name: string
   description: string
@@ -71,6 +73,8 @@ export const createProduct = async (
       'Content-Type': 'multipart/form-data',
     },
   })
+
+  toast.success(`Новый товар "${data.name}" упешно добавлен!`)
 
   return ProductResponseSchema.parse(response.data).data
 }
@@ -148,6 +152,8 @@ export const updateProduct = async (
       'Content-Type': 'multipart/form-data',
     },
   })
+
+  toast.success(`Товар ${product.name} изменен!`)
 
   return ProductResponseSchema.parse(response.data).data
 }

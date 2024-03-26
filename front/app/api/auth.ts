@@ -64,26 +64,7 @@ export const checkUserAuthFx = createEffect(async (token: string | any) => {
   }
 })
 
-/* export const checkUserAuthFx = createEffect(async (url: string) => {
-  try {
-    const data = await api.get(url)
-    const userDataCheck: IUser = await jwtDecode(data.data.accessToken)
 
-    setUser(userDataCheck)
-
-    return data
-  } catch (error) {
-    const axiosError = error as AxiosError
-
-    if (axiosError.response) {
-      if (axiosError.response.status === HTTPStatus.FORBIDDEN) {
-        return false
-      }
-    }
-
-    //toast.error((error as Error).message)
-  }
-}) */
 
 export const logoutFx = createEffect(async (url: string): Promise<void> => {
   try {
@@ -94,26 +75,3 @@ export const logoutFx = createEffect(async (url: string): Promise<void> => {
   }
 })
 
-/*
-
-
-export const checkUserAuthFx = createEffect(async (token: string | any) => {
-	try {
-		const data = jwt_decode(token);
-
-		const { email, id, username } = data as IUser;
-
-		return { email, id, username };
-	} catch (error) {
-		const axiosError = error as AxiosError;
-
-		if (axiosError.response) {
-			if (axiosError.response.status === HTTPStatus.FORBIDDEN) {
-				return false;
-			}
-		}
-
-		// toast.error((error as Error).message);
-	}
-});
-*/
